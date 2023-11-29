@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../static/main.css" />
+        <title>{% block title %} {% endblock %}</title>
+        <style>
+            {% if hightlight == "Home" %}
+                a[class="hLinks home"] {
+                    background-color: #ffffff;
+                    border: .1px solid #ffffff;
+                    color: black;
+                    border-radius: 10px;
+                }
+            {% endif %}
+
+            {% if highlight == "About" %}
+                a[class="hLinks about"] {
+                    background-color: #ffffff;
+                    border: .1px solid #ffffff;
+                    color: black;
+                    border-radius: 10px;
+                }
+            {% endif %}
+
+
+            {% if highlight == "Resume" %}
+                a[class="hLinks resume"] {
+                    background-color: #ffffff;
+                    border: .1px solid #ffffff;
+                    color: black;
+                    border-radius: 10px;
+                }
+            {% endif %}
+
+
+            {% if highlight == "Contact" %}
+                a[class="hLinks contact"] {
+                    background-color: #ffffff;
+                    border: .1px solid #ffffff;
+                    color: black;
+                    border-radius: 10px;
+                }
+            {% endif %}
+            
+        </style>
+        {% block head %}{% endblock %}
+    </head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li class="logo"><a class="logoLink" href="{{ url_for('home') }}">Resume Project</a></li>
+                <li><a class="hLinks home" href="{{ url_for('home') }}">Home</a></li>
+                <li><a class="hLinks resume" href="{{ url_for('resume') }}">Resume</a></li>
+                <li><a class="hLinks about" href="{{ url_for('about')}}">About</a></li>
+                <li><a class="hLinks contact" href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+

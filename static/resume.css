@@ -1,0 +1,173 @@
+body {
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    min-height: 1000px;
+    margin: 50px;
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.container .leftside {
+    position: relative;
+    background: darkblue;
+    padding: 40px;
+}
+
+.nametext {
+    color: white;
+    align-items: center;
+}
+
+.profile-picture {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    color: #EE6F65;
+    text-transform: uppercase;
+    font-weight: 600px;
+    letter-spacing: 1px;
+}
+
+.text {
+    color: white;
+}
+
+.icon {
+    color: lightblue;
+}
+
+.percentE {
+    position: relative;
+    height: 6px;
+    width: 20%;
+    background: #03a9f4;
+    display: block;
+}
+
+.percentH {
+    position: relative;
+    height: 6px;
+    width: 200px;
+    background: #03a9f4;
+    display: block;
+}
+
+.percentP {
+    position: relative;
+    height: 6px;
+    width: 100px;
+    background: #03a9f4;
+    display: block;
+}
+
+.container .rightside {
+    position: relative;
+    background: white;
+    padding: 40px;
+}
+
+.about {
+    margin-bottom: 50px;
+}
+
+.title2 {
+    color: darkblue;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.box h4 {
+    text-transform: uppercase;
+    color: #848c99;
+    font-weight: 500;
+}
+
+.box .percenthtml {
+    position: relative;
+    width: 70%;
+    height: 10px;
+    background: #03a9f4;
+}
+
+.box .percentcss {
+    position: relative;
+    width: 40%;
+    height: 10px;
+    background: #03a9f4;
+}
+
+.box .percentpython {
+    position: relative;
+    width: 10%;
+    height: 10px;
+    background: #03a9f4;
+}
+
+.box .percentc {
+    position: relative;
+    width: 20%;
+    height: 10px;
+    background: #03a9f4;
+}
+
+.hobbies ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.hobbies ul li {
+    list-style: none;
+}
+
+.show-hobbies-parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.show-hobbies {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.hobbie-items {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr; /* Change to a single column for small screens */
+    }
+
+    .container .leftside,
+    .container .rightside {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .show-hobbies {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hobbie-items {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+}
