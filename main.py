@@ -1,5 +1,6 @@
 from flask import Flask, url_for, redirect, render_template, request
 import smtplib
+import json
 import os
 
 smtp_server = "smtp.gmail.com"
@@ -7,6 +8,10 @@ email = os.environ['EMAIL']
 password = os.environ['PASSWORD']
 
 app = Flask(__name__)
+
+
+def to_dict(key, val):
+  return key, val
 
 
 @app.route('/')
@@ -50,19 +55,22 @@ def resume():
     achi_val = [i for i in user_achievements[:7:2]]
     achi_txt = [i for i in user_achievements[1:8:2]]
 
-    def to_dict(key, val):
-      return key, val
-
     lang = dict(map(to_dict, lang_name, lang_val))
     skill = dict(map(to_dict, skill_name, skill_val))
     achi = dict(map(to_dict, achi_val, achi_txt))
+
+    file_name = f"{user_name[:5]}{user_phone}"
+
+    with open(f'./data/{file_name}.json', 'w') as f:
+      json.dump(request.form, f)
+      f.write('\n')
 
     with smtplib.SMTP(smtp_server) as connection:
       connection.starttls()
       connection.login(email, password)
       connection.sendmail(
           email, user_email,
-          f"Subject:Work in progress\n\nDear, {user_name} sorry for the inconvenience we are still working on the site\n\nSite: https://fee.maniklakhanpal.repl.co"
+          f"Subject:Resume Form Generated\n\nDear, {user_name} Now you can access you resume by clicking on following link:\n\nSite: https://fee.maniklakhanpal.repl.co/resume/{file_name}"
       )
 
     # return f"{user_name}, {user_phone}, {user_email}, {user_location}, {user_sec_edu}, {user_sr_edu}, {user_languages}, {user_profile}, {user_achievements}, {user_skills}, {user_knowledge}, {user_hobbies}"
@@ -84,6 +92,48 @@ def resume():
         hobbies=user_hobbies)  #done
   else:
     return render_template('form.html', hightlight='Resume')
+
+
+@app.route('/resume/<id>')
+def load_resume(id):
+  try:
+    with open(f'./data/{id}.json', 'r') as f:
+
+      n = json.load(f)
+
+      lang_name = [i for i in n["languages"].split(', ')[:7:2]]
+      lang_val = [i for i in n["languages"].split(', ')[1:8:2]]
+      skill_name = [i for i in n["prof_skills"].split(', ')[:7:2]]
+      skill_val = [i for i in n["prof_skills"].split(', ')[1:8:2]]
+      achi_val = [i for i in n["achievements"].split(', ')[:7:2]]
+      achi_txt = [i for i in n["achievements"].split(', ')[1:8:2]]
+
+      lang = dict(map(to_dict, lang_name, lang_val))
+      skill = dict(map(to_dict, skill_name, skill_val))
+      achi = dict(map(to_dict, achi_val, achi_txt))
+
+      return render_template(
+          'resume.html',
+          name=n["name"],  #done
+          phone=n["phone"],  #done
+          email=n["email"],  #done
+          location=n["location"],  #done
+          sec=n["secondary_edu"],  #done
+          sr=n["senior_secondary_edu"],  #done
+          language=lang,  #done
+          profile=n["profile"],  #done
+          achievements=achi,  #done
+          skills=skill,  #done
+          linkedin=n["linkedin"],  #done
+          knowledge=n["prof_knowledge"].split(', '),  #done
+          picture=n["picture"],  #done
+          hobbies=n["hobbies"].split(', '))  #done
+
+  except FileNotFoundError:
+    return "ERROR USER DOESNT EXIST"
+
+  finally:
+    print("Operation complete")
 
 
 if __name__ == "__main__":

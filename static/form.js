@@ -1,3 +1,5 @@
+alert("Make sure you add ', ' to seperate values in input, basicaly a comma and space");
+
 document.addEventListener('DOMContentLoaded', function () {
     const inputs = document.querySelectorAll('input, textarea');
 

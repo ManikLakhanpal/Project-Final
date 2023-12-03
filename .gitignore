@@ -1,1 +1,4 @@
 .DS_Store
+file.json
+/data/*
+!/data/.gitkeep
