@@ -9,6 +9,10 @@ body {
     background-repeat: no-repeat;
 }
 
+.imp {
+    display: flex;
+}
+
 .logoLink {
     text-decoration: none;
     color: white;
@@ -36,6 +40,18 @@ nav {
     background-color: #43b6cd;
 }
 
+.w16 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.w12 {
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: white;
+    font-size: 2.3vw;
+}
+
 ul {
     display: flex;
     justify-content: space-around;
@@ -45,6 +61,7 @@ ul {
 li {
     list-style-type: none;
     color: white;
+    margin: 10px;
 } 
 
 .hLinks {
@@ -105,7 +122,7 @@ li {
     justify-content: center;
     color: white;
     width: 70%;
-    font-size: 43px; /* Adjust the font size as needed */
+    font-size: 2.3vw; /* Adjust the font size as needed */
     margin-top: 3px;
     background-color: rgba(0, 0, 0, 0.74); /* Add a semi-transparent background */
     padding: 0 25px; /* Add padding for better visibility */
@@ -113,7 +130,6 @@ li {
 
 .footer {
     background-color: rgb(37, 36, 36);
-    height: 40%;
     border-top: 1px solid grey;
 }
 
@@ -149,4 +165,102 @@ li {
     border: 1px solid #4cc8c8;
     background-color: #4cc8c8;
     color: white;
+}
+
+.menu {
+    display: none;
+}
+
+
+
+@media (max-width: 768px) {
+
+    nav {
+        margin: 0%;
+        
+    }
+
+    .w16 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        padding: 25px;
+        margin-left: 3px;
+    }
+
+    .w12 {
+        display: flex;
+        font-size: 40px;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .v8 {
+        display: inline;
+        font-size: 20px;
+    }
+    
+    div > ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 52px;
+    }
+
+    ul > li {
+        margin: 19px;
+    }
+
+    .hLinks {
+        font-size: 25px;
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+
+    .parent {
+        height: 20%;
+    }
+
+    .displaytxt {
+        font-size: 33px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .subtitle {
+        font-size: 25px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .logo > a{
+        font-size: 33px;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    .site-logo {
+        display: flex;
+        font-size: 30px;
+        text-align: center;
+        align-self: center;
+    }
+
+    .imp {
+        display: none;
+        justify-content: center;
+        align-items: cenet;
+    }
+}
+
+@media (min-width: 768px) {
+    .imp {
+        display: flex;
+    }
 }

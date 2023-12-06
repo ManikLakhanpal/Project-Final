@@ -26,7 +26,7 @@ def about():
 
 @app.route('/contact')
 def contact():
-  return render_template('contact.html', hightlight='contact')
+  return render_template('contact.html', highlight='contact')
 
 
 @app.route('/resume', methods=["GET", "POST"])

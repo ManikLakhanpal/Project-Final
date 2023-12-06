@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../static/main.css" />
         <title>{% block title %} {% endblock %}</title>
         <style>
@@ -34,7 +35,7 @@
             {% endif %}
 
 
-            {% if highlight == "Contact" %}
+            {% if highlight == "contact" %}
                 a[class="hLinks contact"] {
                     background-color: #ffffff;
                     border: .1px solid #ffffff;
@@ -48,9 +49,19 @@
     </head>
 <body>
     <nav>
-        <div>
-            <ul>
-                <li class="logo"><a class="logoLink" href="{{ url_for('home') }}">Resume Project</a></li>
+        <div class="w16">
+            <div class="w12">
+                <div class="v8"></div>
+                <div class="v8 site-logo">Resume Project</div>
+                <div class="v8 menu">
+                    <a href="#" style="color: white;"">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <ul class="imp">
                 <li><a class="hLinks home" href="{{ url_for('home') }}">Home</a></li>
                 <li><a class="hLinks resume" href="{{ url_for('resume') }}">Resume</a></li>
                 <li><a class="hLinks about" href="{{ url_for('about')}}">About</a></li>
